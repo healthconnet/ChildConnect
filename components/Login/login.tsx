@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TextInput, Image, TouchableHighlight, ImageBackground, Button } from 'react-native';
+import { Text, View, TextInput, Image, TouchableHighlight, ScrollView, Button } from 'react-native';
 import { LoginPageProps } from '../../core/Models/props/loginPageProps';
 import { State } from '../../core/Models/state';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -34,27 +34,29 @@ export class Login extends React.Component<LoginPageProps, State> {
   setPass(password: string) {
     this.password = password;
   }
-
+ 
   render() {
     return (
+    
       <View style={styles.root}>
 
         <View style={styles.alternativeLayoutButtonContainer}>
           <Image style={styles.logo_area} source={logoUrl} />
-          <View style={[styles.textAlignStart]}>
-            <Text style={styles.bigFontText} >WELCOME TO CHILD CONNECT</Text>
-          </View>
         </View>
         <View style={styles.roundEdges}>
+
+        <Text style={[styles.bigFontText, {alignSelf: 'center', justifyContent: 'center', marginTop: 20}]} >WELCOME TO CHILD CONNECT</Text>
+
+
           <Image style={styles.pageDividerArea} source={backgroundUrl} />
 
 
 
           <View style={styles.form_background}>
-            <Text style={[styles.text_center, styles.login_text_color, {marginBottom: 20, fontWeight: '400'}]}>Enter your email and password</Text>
 
-            <View style={styles.form_position}>
-              <Icon name="email" size={20} />
+          <Text style={[styles.text_center, styles.login_text_color, {marginBottom: 20}]}>Forgot Password ? Enter registered email. We'll send a link to recover your account</Text>
+
+          <View style={styles.form_position}>
               <TextInput style={styles.form_input_style}
                 onChangeText={text => this.setEmail(text)}
                 value={this.email}
@@ -64,45 +66,15 @@ export class Login extends React.Component<LoginPageProps, State> {
                 keyboardType={'email-address'}
                 returnKeyLabel={'next'}
                 returnKeyType={'next'}
+                placeholder='Email Address'
                 underlineColorAndroid={'#FF0000'}
               />
             </View>
-            <View style={styles.form_position}>
-              <Icon name="lock" size={20} />
-              <TextInput style={styles.form_input_style}
-                onChangeText={text => this.setPass(text)}
-                value={this.password}
-                textContentType={'password'}
-                autoCompleteType={'password'}
-                clearButtonMode={'while-editing'}
-                returnKeyLabel={'done'}
-                returnKeyType={'done'}
-                underlineColorAndroid={'#FF0000'}
-                placeholder={'Password'}
-                secureTextEntry={true}
-              />
-            </View>
-
-            
-
-          <View style={styles.twoRowColumns}>
-            <Button
-              onPress={() => { }}
-              title="Forgot username"
-            />
-            <Button
-              onPress={() => { }}
-              title="Forgot password"
-              color="#841584"
-            />
-          </View>
-
-          <Text style={[styles.text_center, styles.login_text_color]}>If you dont have one create a new user here</Text>
 
           <View style={styles.row_container}>
             <TouchableHighlight activeOpacity={0.8} underlayColor="#ffffff">
               <View style={styles.button_position}>
-                <Text style={styles.login_text_color}>Login</Text>
+                <Text style={styles.login_text_color}>Send</Text>
               </View>
             </TouchableHighlight>
           </View>
@@ -111,6 +83,8 @@ export class Login extends React.Component<LoginPageProps, State> {
         </View>
 
       </View>
+	  
+  
     );
   }
 }
@@ -122,7 +96,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     justifyContent: 'flex-start',
-    backgroundColor: '#FF553E'
+    backgroundColor: '#0047BB'
   },
 
   roundEdges: {
@@ -130,8 +104,7 @@ const styles = StyleSheet.create({
   },
 
   textAlignStart: {
-    marginTop: 35,
-    marginLeft: 20
+    marginTop: 35
   },
 
   alternativeLayoutButtonContainer: {
@@ -146,9 +119,9 @@ const styles = StyleSheet.create({
   },
 
   bigFontText: {
-    fontSize: 20,
+    fontSize: 30,
     color: '#fff',
-    fontWeight: '600'
+    fontWeight: '700'
   },
 
   container: {
@@ -164,8 +137,7 @@ const styles = StyleSheet.create({
   pageDividerArea: {
     maxWidth: 370,
     marginLeft: 20,
-    marginTop: 33,
-    maxHeight: 350,
+    maxHeight: 200,
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
   },
@@ -188,26 +160,26 @@ const styles = StyleSheet.create({
   },
 
   form_position: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     marginBottom: 20,
   },
 
   form_input_style: {
-    flex: 1,
+    marginBottom: 10,
     paddingLeft: 20,
-    borderBottomColor: '#9BE6DE',
-    borderBottomWidth: 1,
+    backgroundColor: '#0047BB',
+    minHeight: 40,
+    borderRadius: 15
   },
 
   form_background: {
     borderBottomRightRadius: 15,
     borderBottomLeftRadius: 15,
     maxWidth: 370,
-    height: 300,
     padding: 20,
     marginLeft: 20,
-    marginRight: 20,
-    backgroundColor: '#E6E6E6',
+    marginRight: 20,    
+    backgroundColor: '#E6E6E6'
   },
 
 
